@@ -1,0 +1,84 @@
+package org.t_robop.triclo.triclo;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+/**
+ * Created by iris on 2017/06/18.
+ */
+
+public class DebugActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_debug);
+
+        //listView
+        ListView lv;
+        String[] activities = {"MainActivity"};
+
+
+        lv = (ListView) findViewById(R.id.listView1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, activities);
+
+        lv.setAdapter(adapter);
+
+        //listView Listener
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ListView listView = (ListView) parent;
+                String item = (String) listView.getItemAtPosition(position);
+                Toast.makeText(getApplicationContext(), item + " clicked", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        //Toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //Drawer
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar,
+                R.string.drawer_open,
+                R.string.drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        //NavigationView Listener
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_item1:
+                        Log.d("TAG", "Item 1");
+                        break;
+                }
+
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+
+
+
+    }
+
+}

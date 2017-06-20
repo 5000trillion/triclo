@@ -16,6 +16,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /**
  * Created by iris on 2017/06/18.
  */
@@ -59,13 +61,23 @@ public class DebugActivity extends AppCompatActivity {
             }
         });
 
+
+        final Class[] activities = {MainActivity.class};
+        final ArrayList<Class> arrayList;
+
         //listView
         ListView lv;
-        String[] activities = {"MainActivity"};
+
 
 
         lv = (ListView) findViewById(R.id.listView1);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, activities);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1);
+        arrayList = new ArrayList<>();
+
+        for (int i=0; i<activities.length;i++){
+            arrayList.add(activities[i]);
+            adapter.add(activities[i].getName().toString());
+        }
 
         lv.setAdapter(adapter);
 
@@ -76,6 +88,10 @@ public class DebugActivity extends AppCompatActivity {
                 ListView listView = (ListView) parent;
                 String item = (String) listView.getItemAtPosition(position);
                 Toast.makeText(getApplicationContext(), item + " clicked", Toast.LENGTH_LONG).show();
+                //String activity = item + ".class";
+
+                Intent intent=new Intent(view.getContext(), arrayList.get(position));
+                startActivity(intent);
             }
         });
 

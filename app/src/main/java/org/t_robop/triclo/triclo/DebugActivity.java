@@ -16,6 +16,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /**
  * Created by iris on 2017/06/18.
  */
@@ -27,25 +29,7 @@ public class DebugActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_debug);
 
-        //listView
-        ListView lv;
-        String[] activities = {"MainActivity"};
 
-
-        lv = (ListView) findViewById(R.id.listView1);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, activities);
-
-        lv.setAdapter(adapter);
-
-        //listView Listener
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ListView listView = (ListView) parent;
-                String item = (String) listView.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(), item + " clicked", Toast.LENGTH_LONG).show();
-            }
-        });
 
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -74,6 +58,40 @@ public class DebugActivity extends AppCompatActivity {
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
+            }
+        });
+
+
+        final Class[] activities = {MainActivity.class};
+        final ArrayList<Class> arrayList;
+
+        //listView
+        ListView lv;
+
+
+
+        lv = (ListView) findViewById(R.id.listView1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1);
+        arrayList = new ArrayList<>();
+
+        for (int i=0; i<activities.length;i++){
+            arrayList.add(activities[i]);
+            adapter.add(activities[i].getName().toString());
+        }
+
+        lv.setAdapter(adapter);
+
+        //listView Listener
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ListView listView = (ListView) parent;
+                String item = (String) listView.getItemAtPosition(position);
+                Toast.makeText(getApplicationContext(), item + " clicked", Toast.LENGTH_LONG).show();
+                //String activity = item + ".class";
+
+                Intent intent=new Intent(view.getContext(), arrayList.get(position));
+                startActivity(intent);
             }
         });
 

@@ -62,7 +62,7 @@ public class DebugActivity extends AppCompatActivity {
         });
 
 
-        final Class[] activities = {MainActivity.class};
+        final Class[] activities = {MainActivity.class,CameraActivity.class,ClRegistActivity.class,CodePickActivity.class};
         final ArrayList<Class> arrayList;
 
         //listView

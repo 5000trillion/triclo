@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() throws Exception {
-        // Context of the app under test.
+        // Context of the org.t_robop.triclo.triclo.app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("org.t_robop.triclo.triclo", appContext.getPackageName());

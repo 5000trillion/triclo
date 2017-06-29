@@ -30,8 +30,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:horizontalSpacing="15dp"
-                    android:numColumns="2"
-                    android:paddingTop="55dp"
+                    android:numColumns="1"
+                    android:paddingTop="100dp"
                     android:verticalSpacing="15dp"></GridView>
 
                 <android.support.design.widget.FloatingActionButton

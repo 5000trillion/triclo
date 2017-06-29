@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         c.moveToFirst();
         for (int i = 0; i < c.getCount(); i++) {
             long id = c.getLong(c.getColumnIndexOrThrow("_id"));
-            Bitmap bmp = MediaStore.Images.Thumbnails.getThumbnail(cr, id, MediaStore.Images.Thumbnails.MICRO_KIND, null);
+            Bitmap bmp = MediaStore.Images.Thumbnails.getThumbnail(cr, id, MediaStore.Images.Thumbnails.MINI_KIND, null);
             list.add(bmp);
             c.moveToNext();
         }
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         c.moveToFirst();
         for (int i = 0; i < c.getCount(); i++) {
             long id = c.getLong(c.getColumnIndexOrThrow("_id"));
-            Bitmap bmp = MediaStore.Images.Thumbnails.getThumbnail(cr, id, MediaStore.Images.Thumbnails.MICRO_KIND, null);
+            Bitmap bmp = MediaStore.Images.Thumbnails.getThumbnail(cr, id, MediaStore.Images.Thumbnails.MINI_KIND, null);
             list.add(bmp);
             c.moveToNext();
         }

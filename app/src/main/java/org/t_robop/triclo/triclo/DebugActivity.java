@@ -30,7 +30,6 @@ public class DebugActivity extends AppCompatActivity {
         setContentView(R.layout.activity_debug);
 
 
-
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -62,19 +61,19 @@ public class DebugActivity extends AppCompatActivity {
         });
 
 
-        final Class[] activities = {MainActivity.class,CameraActivity.class,ClRegistActivity.class,CodePickActivity.class};
+        final Class[] activities = {MainActivity.class, CameraActivity.class, ClRegistActivity.class,
+                TestDbView.class, CodePickActivity.class};
         final ArrayList<Class> arrayList;
 
         //listView
         ListView lv;
 
 
-
         lv = (ListView) findViewById(R.id.listView1);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1);
         arrayList = new ArrayList<>();
 
-        for (int i=0; i<activities.length;i++){
+        for (int i = 0; i < activities.length; i++) {
             arrayList.add(activities[i]);
             adapter.add(activities[i].getName().toString());
         }
@@ -90,11 +89,10 @@ public class DebugActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), item + " clicked", Toast.LENGTH_LONG).show();
                 //String activity = item + ".class";
 
-                Intent intent=new Intent(view.getContext(), arrayList.get(position));
+                Intent intent = new Intent(view.getContext(), arrayList.get(position));
                 startActivity(intent);
             }
         });
-
 
 
     }

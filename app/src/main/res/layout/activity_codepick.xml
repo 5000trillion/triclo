@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/back"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/textView"
@@ -16,7 +26,11 @@
         android:layout_gravity="center"
         android:background="@drawable/button_state"
         android:text="+"
-        android:textSize="32dp"/>
+        android:textSize="32dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2"
+        android:layout_marginTop="61dp" />
 
     <Button
         android:id="@+id/button2"
@@ -25,7 +39,11 @@
         android:layout_gravity="center"
         android:background="@drawable/button_state"
         android:text="+"
-        android:textSize="32dp" />
+        android:textSize="32dp"
+        android:layout_below="@+id/button1"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignStart="@+id/button3"
+        android:layout_marginTop="80dp" />
 
     <Button
         android:id="@+id/button3"
@@ -34,7 +52,11 @@
         android:background="@drawable/button_state"
         android:layout_gravity="center"
         android:text="+"
-        android:textSize="32dp"/>
+        android:textSize="32dp"
+        android:layout_marginBottom="56dp"
+        android:layout_above="@+id/button4"
+        android:layout_alignLeft="@+id/button4"
+        android:layout_alignStart="@+id/button4" />
 
     <Button
         android:id="@+id/button4"
@@ -43,7 +65,13 @@
         android:layout_gravity="center"
         android:background="@drawable/button_state"
         android:text="+"
-        android:textSize="32dp" />
+        android:textSize="32dp"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="101dp"
+        android:layout_marginEnd="101dp" />
 
 
-</LinearLayout>
+</RelativeLayout>

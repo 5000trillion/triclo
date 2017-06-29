@@ -1,5 +1,10 @@
 package org.t_robop.triclo.triclo;
 
+import android.content.ContentResolver;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,13 +27,12 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private Boolean isFabOpen = false;
-    private FloatingActionButton fab,fab1,fab2;
-    private Animation fab_open,fab_close,rotate_forward,rotate_backward;
+    private FloatingActionButton fab, fab1, fab2;
+    private Animation fab_open, fab_close, rotate_forward, rotate_backward;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,46 +69,61 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        ArrayList<String> list = new ArrayList<String>();
-
-        list.add("A");
-        list.add("B");
-        list.add("C");
-        list.add("D");
-        list.add("E");
-        list.add("F");
-        list.add("G");
-        list.add("H");
-        list.add("I");
-        list.add("J");
-        list.add("K");
-        list.add("L");
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                getApplicationContext(), android.R.layout.simple_list_item_1, list);
+        ArrayList<Bitmap> list = load1();
+        BitmapAdapter adapter = new BitmapAdapter(
+                getApplicationContext(), R.layout.list_item,
+                list);
 
         GridView gridView = (GridView) findViewById(R.id.gridView1);
         gridView.setAdapter(adapter);
 
 
-
-
-            Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolBar);
-        fab = (FloatingActionButton)findViewById(R.id.fab);
-        fab1 = (FloatingActionButton)findViewById(R.id.fab1);
-        fab2 = (FloatingActionButton)findViewById(R.id.fab2);
+        Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolBar);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab1 = (FloatingActionButton) findViewById(R.id.fab1);
+        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
-        fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
-        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward);
-        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
+        fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_forward);
+        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_backward);
         fab.setOnClickListener(this);
         fab1.setOnClickListener(this);
         fab2.setOnClickListener(this);
 
-
     }
 
+    private ArrayList<Bitmap> load1() {
+        ArrayList<Bitmap> list = new ArrayList<Bitmap>();
+        ContentResolver cr = getContentResolver();
+        Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+        Cursor c = managedQuery(uri, null, null, null, null);
+        c.moveToFirst();
+        for (int i = 0; i < c.getCount(); i++) {
+            long id = c.getLong(c.getColumnIndexOrThrow("_id"));
+            Bitmap bmp = MediaStore.Images.Thumbnails.getThumbnail(cr, id, MediaStore.Images.Thumbnails.MICRO_KIND, null);
+            list.add(bmp);
+            c.moveToNext();
+        }
+        return list;
+    }
+
+
+
+    private ArrayList<Bitmap> load() {
+        ArrayList<Bitmap> list = new ArrayList<Bitmap>();
+        ContentResolver cr = getContentResolver();
+        Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+        Cursor c = managedQuery(uri, null, null, null, null);
+        c.moveToFirst();
+        for (int i = 0; i < c.getCount(); i++) {
+            long id = c.getLong(c.getColumnIndexOrThrow("_id"));
+            Bitmap bmp = MediaStore.Images.Thumbnails.getThumbnail(cr, id, MediaStore.Images.Thumbnails.MICRO_KIND, null);
+            list.add(bmp);
+            c.moveToNext();
+        }
+        return list;
+    }
         public void onClick(View v) {
             int id = v.getId();
             switch (id){
@@ -143,7 +162,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("Raj","open");
 
             }
-
 
 
 

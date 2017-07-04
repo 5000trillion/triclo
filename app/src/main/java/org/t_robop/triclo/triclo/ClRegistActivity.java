@@ -1,28 +1,19 @@
 package org.t_robop.triclo.triclo;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.support.v4.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.util.Log;
-import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -33,12 +24,8 @@ import java.util.Calendar;
 public class ClRegistActivity extends AppCompatActivity {
     InputMethodManager inputMethodManager;
     private LinearLayout mainLayout;
-    private Calendar dCal = Calendar.getInstance();
     TextView dateText;
-    final Calendar c = Calendar.getInstance();
-    int y = c.get(Calendar.YEAR);
-    int m = c.get(Calendar.MONTH);
-    int d = c.get(Calendar.DAY_OF_MONTH);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +35,7 @@ public class ClRegistActivity extends AppCompatActivity {
         mainLayout = (LinearLayout) findViewById(R.id.main_layout);
 
         EditText cloName = (EditText) findViewById(R.id.editText1);
-        dateText = (TextView)findViewById(R.id.dateText);
-
+        dateText = (TextView) findViewById(R.id.dateText);
 
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -57,7 +43,6 @@ public class ClRegistActivity extends AppCompatActivity {
 
         //spinner
         Spinner jan_spinner = (Spinner) findViewById(R.id.jan_spi);
-
     }
 
     //scrollview外すと機能します
@@ -67,18 +52,26 @@ public class ClRegistActivity extends AppCompatActivity {
         inputMethodManager.hideSoftInputFromWindow(mainLayout.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         // 背景にフォーカスを移す
         mainLayout.requestFocus();
-
         return true;
-
     }
 
-
-
-    
     public void showDatePickerDialog(View v) {
+        final Calendar c = Calendar.getInstance();
+        int nyear = c.get(Calendar.YEAR);
+        int nmonth = c.get(Calendar.MONTH);
+        int nday = c.get(Calendar.DAY_OF_MONTH);
 
-        DialogFragment newFragment = new DatePickerFragment(y,m,d);
-        newFragment.show(getSupportFragmentManager(), "datePicker");
-
+        DatePickerDialog datePicker = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                String date = year+"/"+monthOfYear+"/"+dayOfMonth;
+                Toast.makeText(ClRegistActivity.this, date, Toast.LENGTH_SHORT).show();
+                dateText.setText(date);
+            }
+        },nyear, nmonth, nday);
+        datePicker.show();
+        
     }
+
+
 }

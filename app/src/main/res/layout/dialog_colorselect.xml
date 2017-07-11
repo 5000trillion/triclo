@@ -11,6 +11,19 @@
         <!--    12色くらい用意したさある   -->
 
         <Button
+            android:id="@+id/button13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:tag="何も選択されていません"
+            android:background="@drawable/button_white"
+            android:onClick="colorSelected"
+            android:text="NO選択" />
+
+        <Button
             android:id="@+id/button7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -18,8 +31,9 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:onClick="showColorSelectDialog"
-            android:background="@drawable/button_red" />
+            android:background="@drawable/button_red"
+            android:onClick="colorSelected"
+            android:tag="赤" />
 
         <Button
             android:id="@+id/button6"
@@ -29,17 +43,9 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:background="@drawable/button_yellow" />
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/button_gray" />
+            android:background="@drawable/button_yellow"
+            android:onClick="colorSelected"
+            android:tag="黄" />
 
         <Button
             android:id="@+id/button4"
@@ -49,7 +55,10 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
+            android:tag="緑"
+            android:onClick="colorSelected"
             android:background="@drawable/button_green" />
+
     </TableRow>
 
     <TableRow
@@ -64,7 +73,9 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:background="@drawable/button_light_blue" />
+            android:background="@drawable/button_light_blue"
+            android:onClick="colorSelected"
+            android:tag="水色" />
 
         <Button
             android:id="@+id/button10"
@@ -74,6 +85,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
+            android:tag="紺"
+            android:onClick="colorSelected"
             android:background="@drawable/button_dark_blue" />
 
         <Button
@@ -84,17 +97,77 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
+            android:tag="白"
+            android:onClick="colorSelected"
             android:background="@drawable/button_white" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:background="@drawable/button_black" />
+            android:tag="グレー"
+            android:onClick="colorSelected"
+            android:background="@drawable/button_gray" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:tag="グレー"
+            android:onClick="colorSelected"
+            android:background="@drawable/button_gray" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:tag="グレー"
+            android:onClick="colorSelected"
+            android:background="@drawable/button_gray" />
+
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_black"
+            android:onClick="colorSelected"
+            android:tag="黒" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_black"
+            android:onClick="colorSelected"
+            android:tag="黒" />
+
+
     </TableRow>
 
 </TableLayout>

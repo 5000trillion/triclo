@@ -1,6 +1,7 @@
 package org.t_robop.triclo.triclo;
 
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -23,9 +24,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
+
+import static android.text.method.TextKeyListener.Capitalize.WORDS;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -60,13 +65,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 switch (item.getItemId()) {
                     case R.id.menu_item1:
                         Log.d("TAG", "Item 1");
-                        break;
+
+
+                        Intent intent = new Intent();
+                        intent.setClass(MainActivity.this, Tab1_Activity.class);
+
+                        startActivity(intent);
                 }
+
+
+
 
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             }
+
+
         });
 
         ArrayList<Bitmap> list = load1();
@@ -76,7 +91,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         GridView gridView = (GridView) findViewById(R.id.gridView1);
         gridView.setAdapter(adapter);
-
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String message = position  + "が選択されました。";
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
+            }
+        });
 
         Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
@@ -90,6 +110,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fab.setOnClickListener(this);
         fab1.setOnClickListener(this);
         fab2.setOnClickListener(this);
+
+    }
+
+    private void menu_item1_OnClickListener(View v) {
+
 
     }
 
@@ -110,20 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-    private ArrayList<Bitmap> load() {
-        ArrayList<Bitmap> list = new ArrayList<Bitmap>();
-        ContentResolver cr = getContentResolver();
-        Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-        Cursor c = managedQuery(uri, null, null, null, null);
-        c.moveToFirst();
-        for (int i = 0; i < c.getCount(); i++) {
-            long id = c.getLong(c.getColumnIndexOrThrow("_id"));
-            Bitmap bmp = MediaStore.Images.Thumbnails.getThumbnail(cr, id, MediaStore.Images.Thumbnails.MINI_KIND, null);
-            list.add(bmp);
-            c.moveToNext();
-        }
-        return list;
-    }
+
         public void onClick(View v) {
             int id = v.getId();
             switch (id){
@@ -139,9 +151,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-        public void animateFAB(){
+        public void animateFAB() {
 
-            if(isFabOpen){
+            if (isFabOpen) {
 
                 fab.startAnimation(rotate_backward);
                 fab1.startAnimation(fab_close);
@@ -159,14 +171,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fab1.setClickable(true);
                 fab2.setClickable(true);
                 isFabOpen = true;
-                Log.d("Raj","open");
+                Log.d("Raj", "open");
 
             }
+        }
+
 
 
 
         }
-}
+
 
 
 

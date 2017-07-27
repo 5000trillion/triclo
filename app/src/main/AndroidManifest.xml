@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".CameraActivity"></activity>
-        <activity android:name=".ClRegistActivity"></activity>
-        <activity android:name=".CodePickActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".CameraActivity" />
+        <activity android:name=".ClRegistActivity" />
+        <activity android:name=".TestDbView"/>
+        <activity android:name=".CodePickActivity" />
+        <activity android:name=".ImgCodeTopsActivity" />
         <activity
             android:name=".DebugActivity"
             android:label="DebugActivity">
@@ -22,7 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestDbView"></activity>
+        <activity android:name=".ImgTopsAllActivity" />
+        <activity android:name=".ImgTopsOuterActivity" />
+        <activity android:name=".ImgTopsInnerActivity"></activity>
     </application>
 
 </manifest>

@@ -18,10 +18,9 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:tag="何も選択されていません"
+            android:tag=""
             android:background="@drawable/button_white"
-            android:onClick="colorSelected"
-            android:text="NO選択" />
+            android:onClick="colorSelected" />
 
         <Button
             android:id="@+id/button7"

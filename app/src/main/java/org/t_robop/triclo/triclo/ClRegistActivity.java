@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -66,7 +67,7 @@ public class ClRegistActivity extends AppCompatActivity {
 
         //Spinner
         Spinner janSpinner = (Spinner) findViewById(R.id.jan_spi);
-        Spinner seasonSpinner = (Spinner) findViewById(R.id.season_spi) ;
+        Spinner seasonSpinner = (Spinner) findViewById(R.id.season_spi);
 
         /* 何もないところをタップでキーボード閉じます。
          */
@@ -120,13 +121,14 @@ public class ClRegistActivity extends AppCompatActivity {
             return builder.create();
         }
     }
+
     DialogFragment newFragment = new ColorSelectDialogFragment();
+
     //表示
     public void showColorSelectDialog(View v) {
         newFragment.show(getFragmentManager(), "color");
     }
-
-
+    //選んだとき
     public void colorSelected(View v) {
         String tagstr = String.valueOf(v.getTag());
         colText.setText(tagstr);
@@ -134,4 +136,30 @@ public class ClRegistActivity extends AppCompatActivity {
         Toast.makeText(this, tagstr + "が選択されました", Toast.LENGTH_SHORT).show();
     }
 
+    //戻るボタン押すと確認ダイアログ
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                new AlertDialog.Builder(this)
+                        .setTitle("終了確認")
+                        .setMessage("アプリを終了しますか？")
+                        .setNegativeButton("NO", null)
+                        .setPositiveButton("YES",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        finish();
+                                    }
+                                }
+
+                        )
+                        .show();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void registClData(){
+        Toast.makeText(this, "まだ何もありませんよ", Toast.LENGTH_SHORT).show();
+    }
 }

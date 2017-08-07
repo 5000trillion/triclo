@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="org.t_robop.triclo.triclo">
 
     <application
@@ -9,12 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity" />
         <activity android:name=".CameraActivity" />
         <activity android:name=".ClRegistActivity" />
         <activity android:name=".TestDbView"/>
         <activity android:name=".CodePickActivity" />
         <activity android:name=".ImgCodeTopsActivity" />
+        <activity android:name=".Tab1_Activity"></activity>
         <activity
             android:name=".DebugActivity"
             android:label="DebugActivity">
@@ -24,10 +27,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TestDbView"></activity>
+        <activity android:name=".MaskActivity"></activity>
         <activity android:name=".ImgTopsAllActivity" />
         <activity android:name=".ImgTopsOuterActivity" />
         <activity android:name=".ImgTopsInnerActivity"></activity>
         <activity android:name=".ImgCodeBottomsActivity"></activity>
     </application>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-sdk tools:overrideLibrary="org.opencv"/>
 
 </manifest>

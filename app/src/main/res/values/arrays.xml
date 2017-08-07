@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="imgcode_array">
+        <item name="登録順"></item>
+        <item name="色"></item>
+        <item name="種類"></item>
+    </string-array>
+
+</resources>

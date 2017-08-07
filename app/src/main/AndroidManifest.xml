@@ -27,6 +27,7 @@
         <activity android:name=".ImgTopsAllActivity" />
         <activity android:name=".ImgTopsOuterActivity" />
         <activity android:name=".ImgTopsInnerActivity"></activity>
+        <activity android:name=".ImgCodeBottomsActivity"></activity>
     </application>
 
 </manifest>

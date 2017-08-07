@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4CAF50</color>
-    <color name="colorPrimaryDark">#388E3C</color>
-    <color name="colorAccent">#F44336</color>
-    <color name="colorFAB1">#2196F3</color>
-    <color name="colorFAB2">#E040FB</color>
-
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    
+    <color name="triclo_dark_blue">#ff000084</color>
+    <color name="triclo_light_blue">#ff59C2FF</color>
+    <color name="triclo_red">#ffff4444</color>
+    <color name="triclo_yellow">#ffffff00</color>
+    <color name="triclo_green">#ff00dd00</color>
+    <color name="triclo_gray">#ff8E8E8E</color>
+    
 </resources>

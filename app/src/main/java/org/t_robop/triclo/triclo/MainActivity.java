@@ -30,6 +30,8 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import org.opencv.android.OpenCVLoader;
+
 import static android.text.method.TextKeyListener.Capitalize.WORDS;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -66,14 +68,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case R.id.menu_item1:
                         Log.d("TAG", "Item 1");
 
+                        Intent intent = new Intent(MainActivity.this, Tab1_Activity.class);
 
-                        Intent intent = new Intent();
-                        intent.setClass(MainActivity.this, Tab1_Activity.class);
 
                         startActivity(intent);
                 }
-
-
 
 
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -83,6 +82,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         });
+
+        if(!OpenCVLoader.initDebug()){
+            Log.i("OpenCV", "Failed");
+        }else{
+            Log.i("OpenCV", "successfully built !");
+        }
 
         ArrayList<Bitmap> list = load1();
         BitmapAdapter adapter = new BitmapAdapter(
@@ -113,10 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void menu_item1_OnClickListener(View v) {
 
-
-    }
 
     private ArrayList<Bitmap> load1() {
         ArrayList<Bitmap> list = new ArrayList<Bitmap>();
@@ -144,9 +146,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case R.id.fab1:
                     Log.d("Raj", "Fab 1");
+                    Toast.makeText(v.getContext(),"FABが押されました",Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.fab2:
                     Log.d("Raj", "Fab 2");
+                    Toast.makeText(v.getContext(),"FABが押されました",Toast.LENGTH_SHORT).show();
                     break;
             }
         }

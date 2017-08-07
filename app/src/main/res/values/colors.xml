@@ -10,5 +10,6 @@
     <color name="triclo_yellow">#ffffff00</color>
     <color name="triclo_green">#ff00dd00</color>
     <color name="triclo_gray">#ff8E8E8E</color>
-    
+    <color name="colorFAB1">#2196F3</color>
+    <color name="colorFAB2">#E040FB</color>
 </resources>

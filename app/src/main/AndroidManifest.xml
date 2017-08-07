@@ -13,6 +13,7 @@
         <activity android:name=".CameraActivity"></activity>
         <activity android:name=".ClRegistActivity"></activity>
         <activity android:name=".CodePickActivity"></activity>
+        <activity android:name=".Tab1_Activity"></activity>
         <activity
             android:name=".DebugActivity"
             android:label="DebugActivity">

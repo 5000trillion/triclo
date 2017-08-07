@@ -57,7 +57,7 @@ public class MaskActivity extends Activity implements View.OnTouchListener{
         setContentView(R.layout.activity_mask);
 
         // cv::Mat gray_img = cv::imread("../../image/lenna.png", 1);
-        Mat srcMat = Imgcodecs.imread("/storage/sdcard0/DCIM/Camera/IMG_20170720_170909.jpg");
+        Mat srcMat = Imgcodecs.imread("/storage/sdcard0/DCIM/Camera/IMG_20170807_015133.jpg");
         Size sz = srcMat.size();
         Imgproc.resize(srcMat, srcMat, new Size(sz.width*0.5,sz.height*0.5));
 

@@ -13,36 +13,92 @@
         android:layout_height="match_parent">
 
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                tools:context=".MainActivity">
+
+
+                <GridView
+                    android:id="@+id/gridView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:horizontalSpacing="15dp"
+                    android:numColumns="1"
+                    android:paddingTop="100dp"
+                    android:verticalSpacing="15dp"></GridView>
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="160dp"
+                    android:layout_marginRight="16dp"
+                    android:visibility="invisible"
+                    app:backgroundTint="@color/colorFAB2"
+                    app:elevation="6dp"
+                    app:pressedTranslationZ="12dp" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="90dp"
+                    android:layout_marginRight="16dp"
+                    android:visibility="invisible"
+                    app:backgroundTint="@color/colorFAB1"
+                    app:elevation="6dp"
+                    app:pressedTranslationZ="12dp" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="16dp"
+                    app:backgroundTint="@color/colorAccent"
+                    app:elevation="6dp"
+                    app:pressedTranslationZ="12dp" />
+
+            </android.support.design.widget.CoordinatorLayout>
+
+
+        </RelativeLayout>
+
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/toolbar1"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" />
+                android:layout_height="?attr/actionBarSize"
+                android:layout_weight="1" />
 
         </android.support.design.widget.AppBarLayout>
 
+
         <!-- main contents-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
 
     </FrameLayout>
+
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/drawer" />
+        app:menu="@menu/drawer">
+
+    </android.support.design.widget.NavigationView>
+
 
 </android.support.v4.widget.DrawerLayout>

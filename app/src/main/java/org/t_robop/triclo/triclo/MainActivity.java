@@ -28,6 +28,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.opencv.android.OpenCVLoader;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Boolean isFabOpen = false;
     private FloatingActionButton fab, fab1, fab2;
+    private TextView textView4,textView5;
     private Animation fab_open, fab_close, rotate_forward, rotate_backward;
 
     @Override
@@ -162,8 +164,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fab.startAnimation(rotate_backward);
                 fab1.startAnimation(fab_close);
                 fab2.startAnimation(fab_close);
+                textView4.startAnimation(fab_close);
+                textView5.startAnimation(fab_close);
                 fab1.setClickable(false);
                 fab2.setClickable(false);
+                textView4.setClickable(false);
+                textView5.setClickable(false);
                 isFabOpen = false;
                 Log.d("Raj", "close");
 

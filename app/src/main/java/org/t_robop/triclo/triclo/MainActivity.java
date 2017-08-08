@@ -170,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fab2.setClickable(false);
                 textView4.setClickable(false);
                 textView5.setClickable(false);
+                
                 isFabOpen = false;
                 Log.d("Raj", "close");
 

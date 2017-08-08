@@ -24,6 +24,11 @@ public class CodePickActivity extends Activity {
 
     }
 
+
+    public void intentaccessory(View v){
+        Intent intent = new Intent(getApplicationContext(), ImgCodeAccessoryctivity.class);
+        startActivity(intent);
+    }
     public void intenttops(View v){
         Intent intent = new Intent(getApplicationContext(), ImgCodeTopsActivity.class);
         startActivity(intent);
@@ -32,6 +37,7 @@ public class CodePickActivity extends Activity {
         Intent intent = new Intent(getApplicationContext(), ImgCodeBottomsActivity.class);
         startActivity(intent);
     }
+
 
 
 }

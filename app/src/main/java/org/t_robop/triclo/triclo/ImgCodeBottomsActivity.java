@@ -12,8 +12,6 @@ import android.widget.TabHost;
 
 
 
-
-
 public class ImgCodeBottomsActivity extends TabActivity {
 
     protected void onCreate(Bundle savedInstanceState) {

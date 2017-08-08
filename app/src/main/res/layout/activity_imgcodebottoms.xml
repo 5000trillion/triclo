@@ -49,7 +49,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <include layout="@layout/activity_img_tops_all" />
+                        <include layout="@layout/activity_img_bottoms_all" />
                     </LinearLayout>
 
                     <LinearLayout

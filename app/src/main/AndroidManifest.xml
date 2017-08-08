@@ -37,7 +37,12 @@
         <activity android:name=".ImgTopsOuterActivity" />
         <activity android:name=".ImgTopsInnerActivity" />
         <activity android:name=".ImgCodeBottomsActivity" />
-        <activity android:name=".ImgCodeAccessoryctivity"></activity>
+        <activity android:name=".ImgCodeAccessoryctivity" />
+        <activity android:name=".ImgBottomsAllActivity" />
+        <activity android:name=".ImgAccessoryAllActivity" />
+        <activity android:name=".ImgAccessoryHeadActivity" />
+        <activity android:name=".ImgAccessoryNecklaceActivity" />
+        <activity android:name=".ImgAccessoryBraceletActivity"></activity>
     </application>
 
 </manifest>

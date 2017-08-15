@@ -1,23 +1,17 @@
 package org.t_robop.triclo.triclo;
 
-import android.app.Activity;
 import android.app.TabActivity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TabHost;
 
 
+public class ImgCodeAccessoryActivity extends TabActivity {
 
-
-public class ImgCodeBottomsActivity extends TabActivity {
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_imgcodebottoms);
-
+        setContentView(R.layout.activity_imgcodeaccessoryctivity);
 
         //TabHostオブジェクト取得
         TabHost tabhost = (TabHost) findViewById(android.R.id.tabhost);
@@ -29,14 +23,20 @@ public class ImgCodeBottomsActivity extends TabActivity {
         tabhost.addTab(tab1);
 
         TabHost.TabSpec tab2 = tabhost.newTabSpec("tab2");
-        tab2.setIndicator("ズボン");
+        tab2.setIndicator("帽子");
         tab2.setContent(R.id.tab2);
         tabhost.addTab(tab2);
 
         TabHost.TabSpec tab3 = tabhost.newTabSpec("tab3");
-        tab3.setIndicator("スカート");
+        tab3.setIndicator("ネックレス");
         tab3.setContent(R.id.tab3);
         tabhost.addTab(tab3);
+
+        TabHost.TabSpec tab4 = tabhost.newTabSpec("tab4");
+        tab2.setIndicator("ブレスレット");
+        tab2.setContent(R.id.tab4);
+        tabhost.addTab(tab2);
+
 
         tabhost.setCurrentTab(0);
 

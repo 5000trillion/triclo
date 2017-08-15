@@ -3,11 +3,11 @@ package org.t_robop.triclo.triclo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ImgTopsOuterActivity extends AppCompatActivity {
+public class ImgAccessoryAllActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_img_tops_shirt);
+        setContentView(R.layout.activity_img_accessory_all);
     }
 }

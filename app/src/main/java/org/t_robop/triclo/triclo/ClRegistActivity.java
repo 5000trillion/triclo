@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -37,6 +38,8 @@ public class ClRegistActivity extends AppCompatActivity {
     int nowyear;
     int nowmonth;
     int nowday;
+    Spinner genreSpinner;
+    Spinner seasonSpinner;
 
     InputMethodManager inputMethodManager;
     private LinearLayout mainLayout;
@@ -45,6 +48,9 @@ public class ClRegistActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clregist);
+
+        Realm.init(this);
+        realm = Realm.getDefaultInstance();
 
         //キーボード閉じの初期化
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -61,13 +67,27 @@ public class ClRegistActivity extends AppCompatActivity {
         dateText = (TextView) findViewById(R.id.dateText);
         colText = (TextView) findViewById(R.id.coltext);
 
+        //Spinner
+        genreSpinner = (Spinner) findViewById(R.id.genre_spi);
+        seasonSpinner = (Spinner) findViewById(R.id.season_spi);
+
+
+        //Spinnerの初期化
+        String genreArray[] = {"トップス", "インナー", "シャツ", "ボトムス", "アクセ", "その他"};
+        String seasonArray[] = {"春", "夏", "秋", "冬", "春秋"};
+        ArrayAdapter<String> genreAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, genreArray);
+        ArrayAdapter<String> seasonAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, seasonArray);
+        genreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        seasonAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        genreSpinner.setAdapter(genreAdapter);
+        seasonSpinner.setAdapter(seasonAdapter);
+
+
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Spinner
-        Spinner janSpinner = (Spinner) findViewById(R.id.jan_spi);
-        Spinner seasonSpinner = (Spinner) findViewById(R.id.season_spi);
+
 
         /* 何もないところをタップでキーボード閉じます。
          */
@@ -128,6 +148,7 @@ public class ClRegistActivity extends AppCompatActivity {
     public void showColorSelectDialog(View v) {
         newFragment.show(getFragmentManager(), "color");
     }
+
     //選んだとき
     public void colorSelected(View v) {
         String tagstr = String.valueOf(v.getTag());
@@ -159,7 +180,11 @@ public class ClRegistActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    public void registClData(){
+    public void registClData(View v) {
         Toast.makeText(this, "まだ何もありませんよ", Toast.LENGTH_SHORT).show();
+
+        /*realm.beginTransaction();
+        ClothesDb model = realm.createObject(ClothesDb.class);
+        model.setId(1);*/
     }
 }

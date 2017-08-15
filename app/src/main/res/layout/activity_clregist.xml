@@ -38,8 +38,7 @@
             android:layout_height="300dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/testss" />
+            android:layout_marginTop="10dp"/>
 
         <EditText
             android:id="@+id/editText1"
@@ -63,13 +62,12 @@
             android:text="ジャンル" />
 
         <Spinner
-            android:id="@+id/jan_spi"
+            android:id="@+id/genre_spi"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@android:drawable/btn_dropdown"
-            android:entries="@array/spinner_jan" />
+            android:background="@android:drawable/btn_dropdown" />
 
         <TextView
             android:id="@+id/textView5"
@@ -86,8 +84,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@android:drawable/btn_dropdown"
-            android:entries="@array/season" />
+            android:background="@android:drawable/btn_dropdown"/>
 
         <TextView
             android:id="@+id/textView3"

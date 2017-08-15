@@ -170,7 +170,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fab2.setClickable(false);
                 textView4.setClickable(false);
                 textView5.setClickable(false);
-                
                 isFabOpen = false;
                 Log.d("Raj", "close");
 
@@ -179,8 +178,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fab.startAnimation(rotate_forward);
                 fab1.startAnimation(fab_open);
                 fab2.startAnimation(fab_open);
+                textView4.startAnimation(fab_open);
+                textView5.startAnimation(fab_open);
                 fab1.setClickable(true);
                 fab2.setClickable(true);
+                textView4.setClickable(true);
+                textView5.setClickable(true);
                 isFabOpen = true;
                 Log.d("Raj", "open");
 

@@ -8,6 +8,6 @@ public class ImgTopsOuterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_img_tops_outer);
+        setContentView(R.layout.activity_img_tops_shirt);
     }
 }

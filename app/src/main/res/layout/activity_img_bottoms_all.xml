@@ -6,4 +6,5 @@
     android:layout_height="match_parent"
     tools:context="org.t_robop.triclo.triclo.ImgBottomsAllActivity">
 
+
 </LinearLayout>

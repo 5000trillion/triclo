@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -12,35 +13,25 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-
-import java.util.ArrayList;
-
-import android.app.Activity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.opencv.android.OpenCVLoader;
-
-import static android.text.method.TextKeyListener.Capitalize.WORDS;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private Boolean isFabOpen = false;
     private FloatingActionButton fab, fab1, fab2;
-    private TextView textView4,textView5;
+    private TextView textView4, textView5;
     private Animation fab_open, fab_close, rotate_forward, rotate_backward;
 
     @Override
@@ -71,8 +62,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Log.d("TAG", "Item 1");
 
                         Intent intent = new Intent(MainActivity.this, Tab1_Activity.class);
-
-
                         startActivity(intent);
                 }
 
@@ -86,8 +75,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-
         ArrayList<Bitmap> list = load1();
+        if (list == null) {
+            return;
+        }
         BitmapAdapter adapter = new BitmapAdapter(
                 getApplicationContext(), R.layout.list_item,
                 list);
@@ -96,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String message = position  + "が選択されました。";
+                String message = position + "が選択されました。";
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
             }
         });
@@ -117,7 +108,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
     private ArrayList<Bitmap> load1() {
         ArrayList<Bitmap> list = new ArrayList<Bitmap>();
         ContentResolver cr = getContentResolver();
@@ -134,56 +124,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
-        //fab
-        public void onClick(View v) {
-            int id = v.getId();
-            switch (id){
-                case R.id.fab:
-                    animateFAB();
-                    break;
-                case R.id.fab1:
-                    Log.d("Raj", "Fab 1");
-                    Intent intent1 = new Intent(MainActivity.this, CodePickActivity.class);
-                    startActivity(intent1);
-                    break;
-                case R.id.fab2:
-                    Log.d("Raj", "Fab 2");
-                    Intent intent2 = new Intent(MainActivity.this, ClRegistActivity.class);
-                    startActivity(intent2);
-                    break;
-            }
+    //fab
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.fab:
+                animateFAB();
+                break;
+            case R.id.fab1:
+                Log.d("Raj", "Fab 1");
+                Intent intent1 = new Intent(MainActivity.this, CodePickActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.fab2:
+                Log.d("Raj", "Fab 2");
+                Intent intent2 = new Intent(MainActivity.this, ClRegistActivity.class);
+                startActivity(intent2);
+                break;
         }
+    }
 
-        public void animateFAB() {
+    public void animateFAB() {
 
-            if (isFabOpen) {
+        if (isFabOpen) {
 
-                fab.startAnimation(rotate_backward);
-                fab1.startAnimation(fab_close);
-                fab2.startAnimation(fab_close);
-                fab1.setClickable(false);
-                fab2.setClickable(false);
-                isFabOpen = false;
-                Log.d("Raj", "close");
+            fab.startAnimation(rotate_backward);
+            fab1.startAnimation(fab_close);
+            fab2.startAnimation(fab_close);
+            fab1.setClickable(false);
+            fab2.setClickable(false);
+            isFabOpen = false;
+            Log.d("Raj", "close");
 
-            } else {
+        } else {
 
-                fab.startAnimation(rotate_forward);
-                fab1.startAnimation(fab_open);
-                fab2.startAnimation(fab_open);
-                fab1.setClickable(true);
-                fab2.setClickable(true);
-                isFabOpen = true;
-                Log.d("Raj", "open");
-
-            }
-        }
-
-
-
+            fab.startAnimation(rotate_forward);
+            fab1.startAnimation(fab_open);
+            fab2.startAnimation(fab_open);
+            fab1.setClickable(true);
+            fab2.setClickable(true);
+            isFabOpen = true;
+            Log.d("Raj", "open");
 
         }
+    }
+
+
+}
 
 
 

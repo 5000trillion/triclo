@@ -17,7 +17,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -49,7 +48,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <include layout="@layout/activity_img_bottoms_all" />
+                        <include layout="@layout/activity_img_accessory_all" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -58,7 +57,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <include layout="@layout/activity_img_tops_inner" />
+                        <include layout="@layout/activity_img_accessory_head" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -67,7 +66,16 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <include layout="@layout/activity_img_tops_shirt" />
+                        <include layout="@layout/activity_img_accessory_necklace" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tab4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/activity_img_accessory_bracelet" />
                     </LinearLayout>
                 </FrameLayout>
             </LinearLayout>

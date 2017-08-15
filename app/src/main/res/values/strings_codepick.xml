@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Triclo</string>
+     
+        <string name="menu_item1">保存</string>
+        <string name="menu_item2">キャンセル</string>
+        <string name="menu_item3">保存したコーデを開く</string>
+
+</resources>

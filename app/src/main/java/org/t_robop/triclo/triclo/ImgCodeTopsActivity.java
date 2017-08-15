@@ -1,12 +1,9 @@
 package org.t_robop.triclo.triclo;
 
-import android.app.Activity;
-import android.app.TabActivity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TabHost;
 
 
@@ -14,13 +11,16 @@ import android.widget.TabHost;
  * Created by arika on 2017/07/13.
  */
 
-public class ImgCodeTopsActivity extends TabActivity {
+public class ImgCodeTopsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imgcodetops);
 
+        //Toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         //TabHostオブジェクト取得
         TabHost tabhost = (TabHost) findViewById(android.R.id.tabhost);

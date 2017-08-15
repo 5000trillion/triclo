@@ -1,17 +1,22 @@
 package org.t_robop.triclo.triclo;
 
-import android.app.TabActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TabHost;
 
 
-public class ImgCodeAccessoryActivity extends TabActivity {
+public class ImgCodeAccessoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imgcodeaccessoryctivity);
+
+        //Toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         //TabHostオブジェクト取得
         TabHost tabhost = (TabHost) findViewById(android.R.id.tabhost);

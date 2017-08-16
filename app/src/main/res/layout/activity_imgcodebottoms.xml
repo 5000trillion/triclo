@@ -51,6 +51,12 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
+                        <Spinner
+                            android:id="@+id/spinner1"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:entries="@array/season"/>
+
                         <include layout="@layout/activity_img_bottoms_all" />
                     </LinearLayout>
 
@@ -60,6 +66,12 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
+                        <Spinner
+                            android:id="@+id/spinner2"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:entries="@array/season"/>
+
                         <include layout="@layout/activity_img_tops_inner" />
                     </LinearLayout>
 
@@ -68,6 +80,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
+
+                        <Spinner
+                            android:id="@+id/spinner3"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:entries="@array/season"/>
 
                         <include layout="@layout/activity_img_tops_shirt" />
                     </LinearLayout>

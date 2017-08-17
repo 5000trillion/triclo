@@ -10,10 +10,12 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
 
+        <!-- ここにToolBarを定義 -->
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:minHeight="?android:actionBarSize" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -48,6 +50,12 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
+                        <Spinner
+                            android:id="@+id/spinner1"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:entries="@array/season"/>
+
                         <include layout="@layout/activity_img_accessory_all" />
                     </LinearLayout>
 
@@ -56,6 +64,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
+
+                        <Spinner
+                            android:id="@+id/spinner2"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:entries="@array/season"/>
 
                         <include layout="@layout/activity_img_accessory_head" />
                     </LinearLayout>
@@ -66,6 +80,12 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
+                        <Spinner
+                            android:id="@+id/spinner3"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:entries="@array/season"/>
+
                         <include layout="@layout/activity_img_accessory_necklace" />
                     </LinearLayout>
 
@@ -74,6 +94,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
+
+                        <Spinner
+                            android:id="@+id/spinner4"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:entries="@array/season"/>
 
                         <include layout="@layout/activity_img_accessory_bracelet" />
                     </LinearLayout>

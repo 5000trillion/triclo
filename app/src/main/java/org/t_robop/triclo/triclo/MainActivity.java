@@ -85,11 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         });
 
-        if(!OpenCVLoader.initDebug()){
-            Log.i("OpenCV", "Failed");
-        }else{
-            Log.i("OpenCV", "successfully built !");
-        }
+
 
         ArrayList<Bitmap> list = load1();
         BitmapAdapter adapter = new BitmapAdapter(
@@ -104,6 +100,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
             }
         });
+
+        if(list.isEmpty()){
+            String message ="コーデが登録されていません";
+            Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
+        }
 
         Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
@@ -148,11 +149,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case R.id.fab1:
                     Log.d("Raj", "Fab 1");
-                    Toast.makeText(v.getContext(),"FABが押されました",Toast.LENGTH_SHORT).show();
+                    Intent intent1 = new Intent(MainActivity.this, CodePickActivity.class);
+                    startActivity(intent1);
                     break;
                 case R.id.fab2:
                     Log.d("Raj", "Fab 2");
-                    Toast.makeText(v.getContext(),"FABが押されました",Toast.LENGTH_SHORT).show();
+                    Intent intent2 = new Intent(MainActivity.this, ClRegistActivity.class);
+                    startActivity(intent2);
                     break;
             }
         }
@@ -164,12 +167,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fab.startAnimation(rotate_backward);
                 fab1.startAnimation(fab_close);
                 fab2.startAnimation(fab_close);
-                textView4.startAnimation(fab_close);
-                textView5.startAnimation(fab_close);
                 fab1.setClickable(false);
                 fab2.setClickable(false);
-                textView4.setClickable(false);
-                textView5.setClickable(false);
                 isFabOpen = false;
                 Log.d("Raj", "close");
 
@@ -178,12 +177,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fab.startAnimation(rotate_forward);
                 fab1.startAnimation(fab_open);
                 fab2.startAnimation(fab_open);
-                textView4.startAnimation(fab_open);
-                textView5.startAnimation(fab_open);
                 fab1.setClickable(true);
                 fab2.setClickable(true);
-                textView4.setClickable(true);
-                textView5.setClickable(true);
                 isFabOpen = true;
                 Log.d("Raj", "open");
 

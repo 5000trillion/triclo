@@ -49,6 +49,7 @@ public class ClRegistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clregist);
 
+        //Realmの初期化
         Realm.init(this);
         realm = Realm.getDefaultInstance();
 
@@ -183,8 +184,9 @@ public class ClRegistActivity extends AppCompatActivity {
     public void registClData(View v) {
         Toast.makeText(this, "まだ何もありませんよ", Toast.LENGTH_SHORT).show();
 
-        /*realm.beginTransaction();
+        //realmTransaction
+        realm.beginTransaction();
         ClothesDb model = realm.createObject(ClothesDb.class);
-        model.setId(1);*/
+        model.setId(1);
     }
 }

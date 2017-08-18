@@ -1,7 +1,6 @@
 package org.t_robop.triclo.triclo;
 
 import io.realm.RealmObject;
-import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 
 /**
@@ -18,6 +17,7 @@ public class ClothesDb extends RealmObject {
     private int month;
     private int day;
     private String memo;
+    private byte[] image;
 
 
     @PrimaryKey
@@ -39,19 +39,19 @@ public class ClothesDb extends RealmObject {
         this.id = id;
     }
 
-    public int getGenre(){
+    public int getGenre() {
         return genre;
     }
 
-    public void setGenre(int genre){
+    public void setGenre(int genre) {
         this.genre = genre;
     }
 
-    public int getSeason(){
+    public int getSeason() {
         return season;
     }
 
-    public void setSeason(){
+    public void setSeason() {
         this.season = season;
     }
 
@@ -63,35 +63,35 @@ public class ClothesDb extends RealmObject {
         this.color = color;
     }
 
-    public int getYear(){
+    public int getYear() {
         return year;
     }
 
-    public void setYear(){
+    public void setYear() {
         this.year = year;
     }
 
-    public int getMonth(){
+    public int getMonth() {
         return month;
     }
 
-    public void setMonth(){
+    public void setMonth() {
         this.month = month;
     }
 
-    public int getDay(){
+    public int getDay() {
         return day;
     }
 
-    public void setDay(){
+    public void setDay() {
         this.day = day;
     }
 
-    public String getMemo(){
+    public String getMemo() {
         return memo;
     }
 
-    public void setMemo(){
+    public void setMemo() {
         this.memo = memo;
     }
 
@@ -101,6 +101,14 @@ public class ClothesDb extends RealmObject {
 
     public void setSessionId(int sessionId) {
         this.sessionId = sessionId;
+    }
+
+    public byte[] getImgByte() {
+        return image;
+    }
+
+    public void setImgByte() {
+        this.image = image;
     }
 
 

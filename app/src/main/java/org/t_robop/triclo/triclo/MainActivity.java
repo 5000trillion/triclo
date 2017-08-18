@@ -92,6 +92,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        if(list.isEmpty()){
+            String message ="コーデが登録されていません";
+            Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
+        }
+
         Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
         fab = (FloatingActionButton) findViewById(R.id.fab);

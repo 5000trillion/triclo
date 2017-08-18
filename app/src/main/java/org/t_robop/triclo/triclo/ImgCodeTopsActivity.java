@@ -37,7 +37,7 @@ public class ImgCodeTopsActivity extends AppCompatActivity {
         tabhost.addTab(tab2);
 
         TabHost.TabSpec tab3 = tabhost.newTabSpec("tab3");
-        tab3.setIndicator("アウター");
+        tab3.setIndicator("シャツ");
         tab3.setContent(R.id.tab3);
         tabhost.addTab(tab3);
 

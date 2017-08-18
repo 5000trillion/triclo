@@ -24,7 +24,6 @@ public class CodePickActivity extends AppCompatActivity {
 
     }
 
-
     public void intentaccessory(View v) {
         Intent intent = new Intent(getApplicationContext(), ImgCodeAccessoryActivity.class);
         startActivity(intent);

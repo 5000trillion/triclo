@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -181,10 +182,10 @@ public class ClRegistActivity extends AppCompatActivity {
     }
 
     public void registClData(View v) {
-        Toast.makeText(this, "まだ何もありませんよ", Toast.LENGTH_SHORT).show();
-
         /*realm.beginTransaction();
         ClothesDb model = realm.createObject(ClothesDb.class);
         model.setId(1);*/
+        Intent intent = new Intent(this, ClRegistFinActivity.class);
+        startActivity(intent);
     }
 }

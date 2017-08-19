@@ -42,7 +42,8 @@
         <activity android:name=".ImgAccessoryAllActivity" />
         <activity android:name=".ImgAccessoryHeadActivity" />
         <activity android:name=".ImgAccessoryNecklaceActivity" />
-        <activity android:name=".ImgAccessoryBraceletActivity"></activity>
+        <activity android:name=".ImgAccessoryBraceletActivity" />
+        <activity android:name=".ClRegistFinActivity"></activity>
     </application>
 
 </manifest>

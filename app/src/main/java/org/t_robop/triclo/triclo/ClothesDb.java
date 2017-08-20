@@ -10,18 +10,19 @@ import io.realm.annotations.PrimaryKey;
 
 public class ClothesDb extends RealmObject {
     private String name;
-    private int id;
-    private int genre;
-    private int season;
+    private String id;
+    private String genre;
+    private String season;
     private String color;
     private int year;
     private int month;
     private int day;
     private String memo;
+    //private Byte[] image;
 
 
     @PrimaryKey
-    private int sessionId;
+    private String sessionId;
 
     public String getName() {
         return name;
@@ -31,27 +32,27 @@ public class ClothesDb extends RealmObject {
         this.name = name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getGenre(){
+    public String getGenre(){
         return genre;
     }
 
-    public void setGenre(int genre){
+    public void setGenre(String genre){
         this.genre = genre;
     }
 
-    public int getSeason(){
+    public String  getSeason(){
         return season;
     }
 
-    public void setSeason(){
+    public void setSeason(String season){
         this.season = season;
     }
 
@@ -59,7 +60,7 @@ public class ClothesDb extends RealmObject {
         return color;
     }
 
-    public void setColor() {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -67,7 +68,7 @@ public class ClothesDb extends RealmObject {
         return year;
     }
 
-    public void setYear(){
+    public void setYear(int year){
         this.year = year;
     }
 
@@ -75,7 +76,7 @@ public class ClothesDb extends RealmObject {
         return month;
     }
 
-    public void setMonth(){
+    public void setMonth(int month){
         this.month = month;
     }
 
@@ -83,7 +84,7 @@ public class ClothesDb extends RealmObject {
         return day;
     }
 
-    public void setDay(){
+    public void setDay(int day){
         this.day = day;
     }
 
@@ -91,17 +92,24 @@ public class ClothesDb extends RealmObject {
         return memo;
     }
 
-    public void setMemo(){
+    public void setMemo(String memo){
         this.memo = memo;
     }
 
-    public int getSessionId() {
+    public String getSessionId() {
         return sessionId;
     }
 
-    public void setSessionId(int sessionId) {
+    public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
     }
 
+    /*public Byte[] getImage(){
+        return image;
+    }
+
+    public void setImage(){
+        this.image = image;
+    }*/
 
 }

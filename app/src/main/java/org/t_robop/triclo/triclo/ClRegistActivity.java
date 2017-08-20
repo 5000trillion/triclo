@@ -6,18 +6,22 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,6 +45,8 @@ public class ClRegistActivity extends AppCompatActivity {
     int nowday;
     Spinner genreSpinner;
     Spinner seasonSpinner;
+    Bitmap bmp;
+    ImageView clImg;
 
     InputMethodManager inputMethodManager;
     private LinearLayout mainLayout;
@@ -53,11 +59,18 @@ public class ClRegistActivity extends AppCompatActivity {
         Realm.init(this);
         realm = Realm.getDefaultInstance();
 
+        /* 画像表示
+        byte[] bytes = hoge;
+        bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        clImg = (ImageView) findViewById(R.id.imageView);
+        clImg.setImageBitmap(bmp);
+        */
+
         //キーボード閉じの初期化
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         mainLayout = (LinearLayout) findViewById(R.id.main_layout);
 
-        //DatePick用の初期化
+        //日付変数の初期化 DatePick用
         final Calendar c = Calendar.getInstance();
         nowyear = c.get(Calendar.YEAR);
         nowmonth = c.get(Calendar.MONTH);
@@ -66,6 +79,7 @@ public class ClRegistActivity extends AppCompatActivity {
         //TextView
         EditText cloName = (EditText) findViewById(R.id.editText1);
         dateText = (TextView) findViewById(R.id.dateText);
+        dateText.setText(nowyear + "/" + nowmonth + "/" + nowday);
         colText = (TextView) findViewById(R.id.coltext);
 
         //Spinner
@@ -87,7 +101,7 @@ public class ClRegistActivity extends AppCompatActivity {
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         /* 何もないところをタップでキーボード閉じます。
@@ -103,6 +117,17 @@ public class ClRegistActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 
@@ -135,7 +160,7 @@ public class ClRegistActivity extends AppCompatActivity {
             builder.setView(content);
             builder.setMessage("色選択").setNegativeButton("キャンセル", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    //決定ボタン押したときの処理
+                    //キャンセルボタン押したときの処理
 
                 }
             });
@@ -154,6 +179,7 @@ public class ClRegistActivity extends AppCompatActivity {
     public void colorSelected(View v) {
         String tagstr = String.valueOf(v.getTag());
         colText.setText(tagstr);
+        colText.setTextColor(Color.BLACK);
         newFragment.dismiss();
         Toast.makeText(this, tagstr + "が選択されました", Toast.LENGTH_SHORT).show();
     }
@@ -164,10 +190,10 @@ public class ClRegistActivity extends AppCompatActivity {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
                 new AlertDialog.Builder(this)
-                        .setTitle("終了確認")
-                        .setMessage("アプリを終了しますか？")
-                        .setNegativeButton("NO", null)
-                        .setPositiveButton("YES",
+                        .setTitle("登録を中断しますか？")
+                        .setMessage("入力中の内容は保存されません。")
+                        .setNegativeButton("いいえ", null)
+                        .setPositiveButton("はい",
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {

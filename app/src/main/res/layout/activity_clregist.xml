@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1">
 
-    <!--    marginはdimens.xmlから指定したさある     -->
     <LinearLayout
         android:id="@+id/main_layout"
         android:layout_width="match_parent"
@@ -38,62 +36,117 @@
             android:layout_height="300dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp" />
 
-        <EditText
-            android:id="@+id/editText1"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@android:drawable/editbox_background"
-            android:ems="15"
-            android:hint="名前"
-            android:inputType="textPersonName" />
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/darker_gray"/>
 
-        <TextView
-            android:id="@+id/textView4"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:text="ジャンル" />
+            android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/genre_spi"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="25"
+                android:gravity="center_vertical"
+                android:text="名前"
+                android:textSize="15dp" />
+
+            <EditText
+                android:id="@+id/nameText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_weight="75"
+                android:ems="15"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@android:drawable/btn_dropdown" />
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/darker_gray"/>
 
-        <TextView
-            android:id="@+id/textView5"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:text="季節" />
+            android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/season_spi"
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="25"
+                android:gravity="center_vertical"
+                android:text="ジャンル"
+                android:textSize="15dp" />
+
+            <Spinner
+                android:id="@+id/genre_spi"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_weight="75" />
+        </LinearLayout>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@android:drawable/btn_dropdown"/>
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/darker_gray"/>
 
-        <TextView
-            android:id="@+id/textView3"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:text="服の色" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="25"
+                android:gravity="center_vertical"
+                android:textSize="15dp"
+                android:text="季節" />
+
+            <Spinner
+                android:id="@+id/season_spi"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_weight="75" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/darker_gray"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -101,37 +154,45 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/coltext"
-                android:layout_width="match_parent"
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:textSize="18dp"
+                android:layout_weight="25"
+                android:gravity="center_vertical"
+                android:textSize="15dp"
+                android:text="服の色" />
+
+            <TextView
+                android:id="@+id/coltext"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="55"
+                android:layout_marginLeft="30dp"
+                android:gravity="center"
+                android:textSize="15dp"
                 android:text="何も選択されていません" />
 
             <Button
                 android:id="@+id/colsel"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
-                android:onClick="showColorSelectDialog"
-                android:text="色選択" />
+                android:layout_weight="20"
+                android:background="@android:drawable/ic_input_add"
+                android:onClick="showColorSelectDialog" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView2"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:text="買った日" />
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/darker_gray"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -139,14 +200,24 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/dateText"
-                android:layout_width="wrap_content"
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
                 android:layout_marginLeft="20dp"
-                android:textSize="18sp"
+                android:layout_weight="25"
+                android:gravity="center_vertical"
+                android:textSize="15dp"
+                android:text="買った日" />
+
+            <TextView
+                android:id="@+id/dateText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="55"
+                android:layout_marginLeft="30dp"
+                android:textSize="15dp"
                 android:gravity="center"
-                android:text="______"/>
+                android:textColor="@android:color/black"/>
 
             <Button
                 android:id="@+id/datePick"
@@ -154,34 +225,66 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="0dp"
-                android:layout_weight="1"
-                android:onClick="showDatePickerDialog"
-                android:text="日付選択" />
+                android:layout_weight="20"
+                android:background="@android:drawable/ic_menu_today"
+                android:onClick="showDatePickerDialog" />
 
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/editText2"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@android:drawable/editbox_background"
-            android:ems="10"
-            android:hint="メモ"
-            android:inputType="textMultiLine"
-            android:lines="3" />
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="25"
+                android:gravity="center_vertical"
+                android:textSize="15dp"
+                android:text="メモ" />
+
+            <EditText
+                android:id="@+id/memoText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_weight="75"
+                android:inputType="textMultiLine"
+                android:minLines="3" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/darker_gray"/>
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="登録"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:onClick="registClData"/>
+            android:layout_weight="1"
+            android:onClick="registClData"
+            android:text="登録" />
 
         <Space
             android:layout_width="match_parent"

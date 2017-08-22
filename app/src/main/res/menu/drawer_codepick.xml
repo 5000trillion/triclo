@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_item1"
+            android:title="コーデを新規保存"/>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_item2"
+            android:title="お気に入り登録"/>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_item3"
+            android:title="保存したコーデを開く"/>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_item4"
+            android:title="お気に入りを開く"/>
+    </group>
+
+</menu>

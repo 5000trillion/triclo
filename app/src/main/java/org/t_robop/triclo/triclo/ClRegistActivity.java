@@ -28,7 +28,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.UUID;
 
 import io.realm.Realm;
@@ -146,13 +145,13 @@ public class ClRegistActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == android.R.id.home){
+        if (id == android.R.id.home) {
             finish();
         }
         return true;
     }
 
-    public void setNowDate(){
+    public void setNowDate() {
         final Calendar c = Calendar.getInstance();
         nowYear = c.get(Calendar.YEAR);
         nowMonth = c.get(Calendar.MONTH) + 1;
@@ -240,13 +239,13 @@ public class ClRegistActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    public void initGenreSpinner(){
+    public void initGenreSpinner() {
         ArrayAdapter<String> genreAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, genreArray);
         genreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genreSpinner.setAdapter(genreAdapter);
     }
 
-    public void initSeasonSpinner(){
+    public void initSeasonSpinner() {
         ArrayAdapter<String> seasonAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, seasonArray);
         seasonAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         seasonSpinner.setAdapter(seasonAdapter);
@@ -254,7 +253,7 @@ public class ClRegistActivity extends AppCompatActivity {
 
     //登録ボタン
     public void registClData(View v) {
-        String id = String.valueOf(nowYear+nowMonth+nowDay+nowHour+nowMinute+nowSecond);
+        String id = String.valueOf(nowYear + nowMonth + nowDay + nowHour + nowMinute + nowSecond);
 
         //トランザム
         realm.beginTransaction();

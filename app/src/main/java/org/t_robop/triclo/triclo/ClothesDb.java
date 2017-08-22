@@ -1,7 +1,6 @@
 package org.t_robop.triclo.triclo;
 
 import io.realm.RealmObject;
-import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 
 /**
@@ -40,19 +39,19 @@ public class ClothesDb extends RealmObject {
         this.id = id;
     }
 
-    public String getGenre(){
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre){
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
-    public String  getSeason(){
+    public String getSeason() {
         return season;
     }
 
-    public void setSeason(String season){
+    public void setSeason(String season) {
         this.season = season;
     }
 
@@ -64,35 +63,35 @@ public class ClothesDb extends RealmObject {
         this.color = color;
     }
 
-    public int getYear(){
+    public int getYear() {
         return year;
     }
 
-    public void setYear(int year){
+    public void setYear(int year) {
         this.year = year;
     }
 
-    public int getMonth(){
+    public int getMonth() {
         return month;
     }
 
-    public void setMonth(int month){
+    public void setMonth(int month) {
         this.month = month;
     }
 
-    public int getDay(){
+    public int getDay() {
         return day;
     }
 
-    public void setDay(int day){
+    public void setDay(int day) {
         this.day = day;
     }
 
-    public String getMemo(){
+    public String getMemo() {
         return memo;
     }
 
-    public void setMemo(String memo){
+    public void setMemo(String memo) {
         this.memo = memo;
     }
 

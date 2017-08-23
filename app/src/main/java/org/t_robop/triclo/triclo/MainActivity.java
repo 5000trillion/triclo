@@ -1,24 +1,28 @@
 package org.t_robop.triclo.triclo;
 
+import android.Manifest;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -43,8 +47,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView textView4,textView5;
     private Animation fab_open, fab_close, rotate_forward, rotate_backward;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        permissionAcquisition();
+        permissionAcquisition1();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -121,6 +130,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    private void permissionAcquisition() {
+
+        // Android6.0以降でのPermissionの確認
+        //拒否されている時の処理
+        if (ContextCompat.checkSelfPermission(
+                this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            // 許可されている時の処理
+        } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            //拒否された時 Permissionが必要な理由を表示して再度許可を求めたり、機能を無効にしたりします。
+            //AlertDialog
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+            alertDialog.setMessage("ストレージへのアクセスが必要です。" + "\n" + "次の画面で許可を押してください。");      //内容
+            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+                }
+            });
+            alertDialog.create();
+            alertDialog.show();
+
+        } else {
+            //まだ許可を求める前の時、許可を求めるダイアログを表示します。
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+        }}
+
+    private void permissionAcquisition1() {
+
+        // Android6.0以降でのPermissionの確認
+        //拒否されている時の処理
+        if (ContextCompat.checkSelfPermission(
+                this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            // 許可されている時の処理
+        } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+            //拒否された時 Permissionが必要な理由を表示して再度許可を求めたり、機能を無効にしたりします。
+            //AlertDialog
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+            alertDialog.setMessage("ストレージへのアクセスが必要です。" + "\n" + "次の画面で許可を押してください。");      //内容
+            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, 0);
+                }
+            });
+            alertDialog.create();
+            alertDialog.show();
+
+        } else {
+            //まだ許可を求める前の時、許可を求めるダイアログを表示します。
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 0);
+
+        }}
 
 
     private ArrayList<Bitmap> load1() {

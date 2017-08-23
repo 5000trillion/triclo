@@ -10,7 +10,6 @@ import io.realm.annotations.PrimaryKey;
 
 public class ClothesDb extends RealmObject {
     private String name;
-    private String id;
     private String genre;
     private String season;
     private String color;
@@ -18,11 +17,11 @@ public class ClothesDb extends RealmObject {
     private int month;
     private int day;
     private String memo;
-    //private Byte[] image;
-
+    private byte[] image;
 
     @PrimaryKey
-    private String sessionId;
+    private long id;
+
 
     public String getName() {
         return name;
@@ -32,11 +31,11 @@ public class ClothesDb extends RealmObject {
         this.name = name;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -96,20 +95,12 @@ public class ClothesDb extends RealmObject {
         this.memo = memo;
     }
 
-    public String getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
-    }
-
-    /*public Byte[] getImage(){
+    public byte[] getImage(){
         return image;
     }
 
-    public void setImage(){
+    public void setImage(byte[] image){
         this.image = image;
-    }*/
+    }
 
 }

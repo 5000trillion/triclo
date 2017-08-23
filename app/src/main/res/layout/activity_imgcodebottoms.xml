@@ -1,97 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/DrawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CodePickActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".CodePickActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-
-        <!-- ここにToolBarを定義 -->
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?android:actionBarSize" />
-
-    </android.support.design.widget.AppBarLayout>
-
-
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <TabHost
-            android:id="@android:id/tabhost"
+
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <!-- ここにToolBarを定義 -->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:minHeight="?android:actionBarSize" />
 
-                <TabWidget
-                    android:id="@android:id/tabs"
+        </android.support.design.widget.AppBarLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="54dp"
+            android:orientation="horizontal">
+
+            <TabHost
+                android:id="@android:id/tabhost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <FrameLayout
-                    android:id="@android:id/tabcontent"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:id="@+id/tab1"
+                    <TabWidget
+                        android:id="@android:id/tabs"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content" />
 
-                        <Spinner
-                            android:id="@+id/spinner1"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:entries="@array/season"/>
-
-                        <include layout="@layout/activity_img_bottoms_all" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/tab2"
+                    <FrameLayout
+                        android:id="@android:id/tabcontent"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_height="match_parent">
 
-                        <Spinner
-                            android:id="@+id/spinner2"
+                        <LinearLayout
+                            android:id="@+id/tab1"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:entries="@array/season"/>
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
-                        <include layout="@layout/activity_img_tops_inner" />
-                    </LinearLayout>
+                            <Spinner
+                                android:id="@+id/spinner1"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:entries="@array/season" />
 
-                    <LinearLayout
-                        android:id="@+id/tab3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                            <include layout="@layout/activity_img_bottoms_all" />
+                        </LinearLayout>
 
-                        <Spinner
-                            android:id="@+id/spinner3"
+                        <LinearLayout
+                            android:id="@+id/tab2"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:entries="@array/season"/>
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
-                        <include layout="@layout/activity_img_tops_shirt" />
-                    </LinearLayout>
-                </FrameLayout>
-            </LinearLayout>
-        </TabHost>
-    </LinearLayout>
+                            <Spinner
+                                android:id="@+id/spinner2"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:entries="@array/season" />
 
-</LinearLayout>
+                            <include layout="@layout/activity_img_bottoms_pants" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/tab3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <Spinner
+                                android:id="@+id/spinner3"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:entries="@array/season" />
+
+                            <include layout="@layout/activity_img_code_bottoms_skirt" />
+                        </LinearLayout>
+                    </FrameLayout>
+                </LinearLayout>
+            </TabHost>
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/NavigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/drawer_imgcode">
+
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>

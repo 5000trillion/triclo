@@ -41,11 +41,12 @@
         <activity android:name=".ImgBottomsAllActivity" />
         <activity android:name=".ImgAccessoryAllActivity" />
         <activity android:name=".ImgAccessoryHeadActivity" />
-        <activity android:name=".ImgAccessoryNecklaceActivity" />
-        <activity android:name=".ImgAccessoryBraceletActivity" />
+        <activity android:name=".ImgAccessoryNeckActivity" />
+        <activity android:name=".ImgAccessoryBagActivity" />
         <activity android:name=".ClRegistFinActivity" />
         <activity android:name=".ImgBottomsPants" />
-        <activity android:name=".ImgCodeBottomsSkirtActivity"></activity>
+        <activity android:name=".ImgCodeBottomsSkirtActivity" />
+        <activity android:name=".CodeRegistActivity" />
     </application>
 
 </manifest>

@@ -4,19 +4,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_item1"
-            android:title="コーデを新規保存"/>
+            android:title="お気に入りに登録" />
     </group>
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_item2"
-            android:title="お気に入り登録"/>
+            android:title="お気に入りを削除"/>
     </group>
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_item3"
-            android:title="保存したコーデを開く"/>
+            android:title="コーデを削除する"/>
     </group>
 
 </menu>

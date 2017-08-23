@@ -94,7 +94,7 @@
                                 android:layout_height="50dp"
                                 android:entries="@array/season" />
 
-                            <include layout="@layout/activity_img_accessory_necklace" />
+                            <include layout="@layout/activity_img_accessory_neck" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -109,7 +109,7 @@
                                 android:layout_height="50dp"
                                 android:entries="@array/season" />
 
-                            <include layout="@layout/activity_img_accessory_bracelet" />
+                            <include layout="@layout/activity_img_accessory_bag" />
                         </LinearLayout>
                     </FrameLayout>
                 </LinearLayout>

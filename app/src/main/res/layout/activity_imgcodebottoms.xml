@@ -80,7 +80,7 @@
                                 android:layout_height="50dp"
                                 android:entries="@array/season" />
 
-                            <include layout="@layout/activity_img_tops_inner" />
+                            <include layout="@layout/activity_img_bottoms_pants" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -95,7 +95,7 @@
                                 android:layout_height="50dp"
                                 android:entries="@array/season" />
 
-                            <include layout="@layout/activity_img_tops_shirt" />
+                            <include layout="@layout/activity_img_code_bottoms_skirt" />
                         </LinearLayout>
                     </FrameLayout>
                 </LinearLayout>

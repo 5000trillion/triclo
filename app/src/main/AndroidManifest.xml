@@ -43,7 +43,9 @@
         <activity android:name=".ImgAccessoryHeadActivity" />
         <activity android:name=".ImgAccessoryNecklaceActivity" />
         <activity android:name=".ImgAccessoryBraceletActivity" />
-        <activity android:name=".ClRegistFinActivity"></activity>
+        <activity android:name=".ClRegistFinActivity" />
+        <activity android:name=".ImgBottomsPants" />
+        <activity android:name=".ImgCodeBottomsSkirtActivity"></activity>
     </application>
 
 </manifest>

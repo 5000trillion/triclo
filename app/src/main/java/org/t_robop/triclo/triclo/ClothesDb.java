@@ -23,6 +23,8 @@ public class ClothesDb extends RealmObject {
     private long id;
 
 
+
+
     public String getName() {
         return name;
     }

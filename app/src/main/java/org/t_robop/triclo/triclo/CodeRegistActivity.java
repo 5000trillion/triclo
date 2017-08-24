@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 public class CodeRegistActivity extends AppCompatActivity {
@@ -38,7 +39,6 @@ public class CodeRegistActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_item1:
-                        Log.d("TAG", "Item 1");
 
                         Intent intent = new Intent(CodeRegistActivity.this, Tab1_Activity.class);
 
@@ -55,4 +55,11 @@ public class CodeRegistActivity extends AppCompatActivity {
 
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
 }

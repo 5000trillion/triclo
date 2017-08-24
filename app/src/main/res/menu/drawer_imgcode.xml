@@ -4,13 +4,13 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_item1"
-            android:title="登録情報の変更"/>
+            android:title="登録情報を変更"/>
     </group>
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_item2"
-            android:title="登録情報の削除"/>
+            android:title="登録情報を削除"/>
     </group>
 
 </menu>

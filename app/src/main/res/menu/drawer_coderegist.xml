@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_item1"
-            android:title="お気に入りに登録" />
+            android:title="お気に入り登録" />
     </group>
 
     <group android:checkableBehavior="single">

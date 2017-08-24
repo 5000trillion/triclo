@@ -43,7 +43,6 @@
                     android:layout_marginBottom="100dp"
                     android:layout_marginRight="70dp"
                     android:text="コーデを追加"
-
                     android:textColor="@color/colorFAB1"/>
 
                 <GridView

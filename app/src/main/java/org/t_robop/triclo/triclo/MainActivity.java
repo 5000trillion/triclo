@@ -81,6 +81,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                         startActivity(intent);
+
+                    case R.id.menu_item2:
+                        Log.d("TAG", "Item 2");
+
+                        Intent intent1 = new Intent(MainActivity.this, Tab1_Activity.class);
+
+
+                        startActivity(intent1);
                 }
 
 

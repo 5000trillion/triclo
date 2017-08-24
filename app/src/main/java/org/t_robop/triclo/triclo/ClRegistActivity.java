@@ -27,11 +27,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.UUID;
 
 import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 
 /**
@@ -45,6 +46,8 @@ public class ClRegistActivity extends AppCompatActivity {
     TextView dateText;
     TextView colText;
     String clColor;
+
+    TextView resultText;
 
     String genreArray[] = {"トップス", "インナー", "シャツ", "ボトムス", "アクセ", "その他"};
     String seasonArray[] = {"春", "夏", "秋", "冬", "春秋"};
@@ -75,16 +78,20 @@ public class ClRegistActivity extends AppCompatActivity {
         Realm.init(this);
         realm = Realm.getDefaultInstance();
 
-        /* 画像表示
-        byte[] bytes = hoge;
-        bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        //Intent intent = getIntent();
+        //byte[] bytes = intent.getByteArrayExtra("imege");
+
+
+        //画像表示
+        //byte[] bytes = hoge;
+        //mp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 
         Intent intent = getIntent();
-        bmp = (Bitmap) intent.getParcelableExtra("hoge");
+        bmp = (Bitmap) intent.getParcelableExtra("image");
 
         clImg = (ImageView) findViewById(R.id.imageView);
         clImg.setImageBitmap(bmp);
-        */
+
 
         //キーボード閉じの初期化
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -102,6 +109,8 @@ public class ClRegistActivity extends AppCompatActivity {
         dateText = (TextView) findViewById(R.id.dateText);
         dateText.setText(nowYear + "/" + nowMonth + "/" + nowDay);
         colText = (TextView) findViewById(R.id.coltext);
+        resultText = (TextView) findViewById(R.id.textView7);
+
 
         //Spinner
         genreSpinner = (Spinner) findViewById(R.id.genre_spi);
@@ -146,13 +155,13 @@ public class ClRegistActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == android.R.id.home){
+        if (id == android.R.id.home) {
             finish();
         }
         return true;
     }
 
-    public void setNowDate(){
+    public void setNowDate() {
         final Calendar c = Calendar.getInstance();
         nowYear = c.get(Calendar.YEAR);
         nowMonth = c.get(Calendar.MONTH) + 1;
@@ -240,13 +249,13 @@ public class ClRegistActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    public void initGenreSpinner(){
+    public void initGenreSpinner() {
         ArrayAdapter<String> genreAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, genreArray);
         genreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genreSpinner.setAdapter(genreAdapter);
     }
 
-    public void initSeasonSpinner(){
+    public void initSeasonSpinner() {
         ArrayAdapter<String> seasonAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, seasonArray);
         seasonAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         seasonSpinner.setAdapter(seasonAdapter);
@@ -254,23 +263,42 @@ public class ClRegistActivity extends AppCompatActivity {
 
     //登録ボタン
     public void registClData(View v) {
-        String id = String.valueOf(nowYear+nowMonth+nowDay+nowHour+nowMinute+nowSecond);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] bytes = baos.toByteArray();
+
+        setNowDate();
+        String id = String.valueOf(nowYear) + String.valueOf(nowMonth) + String.valueOf(nowDay)
+                + String.valueOf(nowHour) + String.valueOf(nowMinute) + String.valueOf(nowSecond);
+        long l = Long.parseLong(id);
+
 
         //トランザム
         realm.beginTransaction();
-        ClothesDb model = realm.createObject(ClothesDb.class, UUID.randomUUID().toString());
-        model.setId(id);
-        model.setName(clName.getText().toString());
-        model.setGenre(genreSpinner.getSelectedItem().toString());
-        model.setSeason(seasonSpinner.getSelectedItem().toString());
-        model.setColor(clColor);
-        model.setYear(boughtYear);
-        model.setMonth(boughtMonth);
-        model.setDay(boughtDay);
-        model.setMemo(clMemo.getText().toString());
+        ClothesDb clothes = realm.createObject(ClothesDb.class, l);
+        clothes.setName(clName.getText().toString());
+        clothes.setGenre(genreSpinner.getSelectedItem().toString());
+        clothes.setSeason(seasonSpinner.getSelectedItem().toString());
+        clothes.setColor(clColor);
+        clothes.setYear(boughtYear);
+        clothes.setMonth(boughtMonth);
+        clothes.setDay(boughtDay);
+        clothes.setMemo(clMemo.getText().toString());
+        clothes.setImage(bytes);
         realm.commitTransaction();
 
         Intent intent = new Intent(this, ClRegistFinActivity.class);
+        intent.putExtra("clId", l);
         startActivity(intent);
+    }
+
+    public void find(View v) {
+        RealmQuery<ClothesDb> find = realm.where(ClothesDb.class);
+        RealmResults<ClothesDb> results = find.findAll();
+
+        for (ClothesDb test : results) {
+            String res = String.valueOf(test.getId());
+            resultText.setText(res);
+        }
     }
 }

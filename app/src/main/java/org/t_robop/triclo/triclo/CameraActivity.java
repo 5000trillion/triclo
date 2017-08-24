@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
+
 /**
  * Created by siilo on 2017/06/20.
  */
@@ -41,6 +43,13 @@ public class CameraActivity extends AppCompatActivity {
         if (requestCode == RESULT_CAMERA) {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(bitmap);
+            //ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            //bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+            //byte[] bytes = baos.toByteArray();
+            Intent intent = new Intent(this, ClRegistActivity.class);
+            intent.putExtra("image",bitmap);
+            startActivity(intent);
+
         }
     }
 }

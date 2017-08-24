@@ -1,16 +1,12 @@
 package org.t_robop.triclo.triclo;
 
 import android.Manifest;
-import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -100,10 +96,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ArrayList<Bitmap> list = new ArrayList<Bitmap>();
         RealmQuery<ClothesDb> find = realm.where(ClothesDb.class);
         RealmResults<ClothesDb> results = find.findAll();
-        for (int i = 0; i < results.size(); i++){
+        for (int i = 0; i < results.size(); i++) {
             bytes = results.get(i).getImage();
             Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-            list.add(i,bmp);
+            list.add(i, bmp);
         }
 
         BitmapAdapter adapter = new BitmapAdapter(
@@ -197,7 +193,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
-
 
 
     //fab

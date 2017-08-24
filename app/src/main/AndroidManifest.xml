@@ -24,6 +24,7 @@
         <activity android:name=".CodePickActivity" />
         <activity android:name=".ImgCodeTopsActivity" />
         <activity android:name=".Tab1_Activity" />
+        <activity android:name=".CodepickFinActivity"/>
         <activity
             android:name=".DebugActivity"
             android:label="DebugActivity">
@@ -47,7 +48,7 @@
         <activity android:name=".ImgAccessoryBagActivity" />
         <activity android:name=".ClRegistFinActivity" />
         <activity android:name=".ImgBottomsPants" />
-        <activity android:name=".ImgCodeBottomsSkirtActivity" />
+        <activity android:name=".ImgBottomsSkirtActivity" />
         <activity android:name=".CodeRegistActivity" />
     </application>
 

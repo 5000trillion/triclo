@@ -3,7 +3,7 @@ package org.t_robop.triclo.triclo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ImgCodeBottomsSkirtActivity extends AppCompatActivity {
+public class ImgBottomsSkirtActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

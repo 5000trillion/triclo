@@ -62,8 +62,7 @@
                             <Spinner
                                 android:id="@+id/spinner1"
                                 android:layout_width="match_parent"
-                                android:layout_height="50dp"
-                                android:entries="@array/season" />
+                                android:layout_height="50dp" />
 
                             <include layout="@layout/activity_img_tops_all" />
                         </LinearLayout>
@@ -77,8 +76,7 @@
                             <Spinner
                                 android:id="@+id/spinner2"
                                 android:layout_width="match_parent"
-                                android:layout_height="50dp"
-                                android:entries="@array/season" />
+                                android:layout_height="50dp"/>
 
                             <include layout="@layout/activity_img_tops_inner" />
                         </LinearLayout>
@@ -92,8 +90,7 @@
                             <Spinner
                                 android:id="@+id/spinner3"
                                 android:layout_width="match_parent"
-                                android:layout_height="50dp"
-                                android:entries="@array/season" />
+                                android:layout_height="50dp"/>
 
                             <include layout="@layout/activity_img_tops_shirt" />
                         </LinearLayout>

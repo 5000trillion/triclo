@@ -47,8 +47,8 @@ public class CodePickActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void intentregist(View v){
-        Intent intent = new Intent(this, CodepickFinActivity.class);
+    public void intentfin(View v){
+        Intent intent = new Intent(getApplicationContext(),CodepickFinActivity.class);
         startActivity(intent);
     }
 

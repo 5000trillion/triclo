@@ -1,9 +1,11 @@
 package org.t_robop.triclo.triclo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
 
 public class CodepickFinActivity extends AppCompatActivity {
 
@@ -17,6 +19,22 @@ public class CodepickFinActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
     }
+
+    public void intentcodepick(View v){
+        Intent intent = new Intent(this, CodePickActivity.class);
+        startActivity(intent);
+    }
+
+    public void intentcoderegist(View v){
+        Intent intent = new Intent(this, CodeRegistActivity.class);
+        startActivity(intent);
+    }
+
+    public void intentmain(View v){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

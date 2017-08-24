@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TabHost;
 
 
@@ -24,10 +26,22 @@ public class ImgCodeTopsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imgcodetops);
+        ClRegistActivity cl = new ClRegistActivity();
 
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //spinner
+        Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
+        Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
+        Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
+        ArrayAdapter<String> seasonAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cl.seasonArray);
+        seasonAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(seasonAdapter);
+        spinner2.setAdapter(seasonAdapter);
+        spinner3.setAdapter(seasonAdapter);
+
 
         //Drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);

@@ -62,40 +62,9 @@
                             <Spinner
                                 android:id="@+id/spinner1"
                                 android:layout_width="match_parent"
-                                android:layout_height="50dp"
-                                android:entries="@array/season" />
+                                android:layout_height="50dp"/>
 
                             <include layout="@layout/activity_img_bottoms_all" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/tab2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                            <Spinner
-                                android:id="@+id/spinner2"
-                                android:layout_width="match_parent"
-                                android:layout_height="50dp"
-                                android:entries="@array/season" />
-
-                            <include layout="@layout/activity_img_bottoms_pants" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/tab3"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                            <Spinner
-                                android:id="@+id/spinner3"
-                                android:layout_width="match_parent"
-                                android:layout_height="50dp"
-                                android:entries="@array/season" />
-
-                            <include layout="@layout/activity_img_code_bottoms_skirt" />
                         </LinearLayout>
                     </FrameLayout>
                 </LinearLayout>

@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TabHost;
 
 
@@ -21,12 +23,19 @@ public class ImgCodeBottomsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imgcodebottoms);
+        ClRegistActivity cl = new ClRegistActivity();
 
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//Drawer
+        //spinner
+        Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
+        ArrayAdapter<String> seasonAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cl.seasonArray);
+        seasonAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(seasonAdapter);
+
+        //Drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar,
@@ -66,16 +75,6 @@ public class ImgCodeBottomsActivity extends AppCompatActivity {
         tab1.setIndicator("全て");
         tab1.setContent(R.id.tab1);
         tabhost.addTab(tab1);
-
-        TabHost.TabSpec tab2 = tabhost.newTabSpec("tab2");
-        tab2.setIndicator("ズボン");
-        tab2.setContent(R.id.tab2);
-        tabhost.addTab(tab2);
-
-        TabHost.TabSpec tab3 = tabhost.newTabSpec("tab3");
-        tab3.setIndicator("スカート");
-        tab3.setContent(R.id.tab3);
-        tabhost.addTab(tab3);
 
         tabhost.setCurrentTab(0);
 

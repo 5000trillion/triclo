@@ -139,6 +139,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fab1.setOnClickListener(this);
         fab2.setOnClickListener(this);
 
+        //最初にテキストが見えるのを防止する
+        textView4.startAnimation(fab_close);
+        textView5.startAnimation(fab_close);
+
     }
 
     private void permissionAcquisition() {
@@ -210,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.fab2:
                 Log.d("Raj", "Fab 2");
-                Intent intent2 = new Intent(MainActivity.this, ClRegistActivity.class);
+                Intent intent2 = new Intent(MainActivity.this, CameraActivity.class);
                 startActivity(intent2);
                 break;
         }

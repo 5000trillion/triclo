@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -18,34 +20,31 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import java.util.ArrayList;
-import android.app.Activity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.opencv.android.OpenCVLoader;
+import java.util.ArrayList;
 
-import static android.text.method.TextKeyListener.Capitalize.WORDS;
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
+    Realm realm;
 
     private Boolean isFabOpen = false;
     private FloatingActionButton fab, fab1, fab2;
-    private TextView textView4,textView5;
+    private TextView textView4, textView5;
     private Animation fab_open, fab_close, rotate_forward, rotate_backward;
+    private byte[] bytes;
 
 
     @Override
@@ -56,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Realm.init(this);
+        realm = Realm.getDefaultInstance();
 
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
@@ -95,8 +97,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
+        ArrayList<Bitmap> list = new ArrayList<Bitmap>();
+        RealmQuery<ClothesDb> find = realm.where(ClothesDb.class);
+        RealmResults<ClothesDb> results = find.findAll();
+        for (int i = 0; i < results.size(); i++){
+            bytes = results.get(i).getImage();
+            Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            list.add(i,bmp);
+        }
 
-        ArrayList<Bitmap> list = load1();
         BitmapAdapter adapter = new BitmapAdapter(
                 getApplicationContext(), R.layout.list_item,
                 list);
@@ -105,13 +114,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String message = position  + "が選択されました。";
+                String message = position + "が選択されました。";
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
             }
         });
 
-        if(list.isEmpty()){
-            String message ="コーデが登録されていません";
+        if (list.isEmpty()) {
+            String message = "コーデが登録されていません";
             Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
         }
 
@@ -120,6 +129,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab1 = (FloatingActionButton) findViewById(R.id.fab1);
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+        textView4 = (TextView) findViewById(R.id.textView4);
+        textView5 = (TextView) findViewById(R.id.textView5);
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
         rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_forward);
@@ -153,7 +164,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             //まだ許可を求める前の時、許可を求めるダイアログを表示します。
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
-        }}
+        }
+    }
 
     private void permissionAcquisition1() {
 
@@ -179,75 +191,66 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //まだ許可を求める前の時、許可を求めるダイアログを表示します。
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 0);
 
-        }}
-
-
-    private ArrayList<Bitmap> load1() {
-        ArrayList<Bitmap> list = new ArrayList<Bitmap>();
-        ContentResolver cr = getContentResolver();
-        Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-        Cursor c = managedQuery(uri, null, null, null, null);
-        c.moveToFirst();
-        for (int i = 0; i < c.getCount(); i++) {
-            long id = c.getLong(c.getColumnIndexOrThrow("_id"));
-            Bitmap bmp = MediaStore.Images.Thumbnails.getThumbnail(cr, id, MediaStore.Images.Thumbnails.MINI_KIND, null);
-            list.add(bmp);
-            c.moveToNext();
         }
-        return list;
     }
 
 
 
-        //fab
-        public void onClick(View v) {
-            int id = v.getId();
-            switch (id){
-                case R.id.fab:
-                    animateFAB();
-                    break;
-                case R.id.fab1:
-                    Log.d("Raj", "Fab 1");
-                    Intent intent1 = new Intent(MainActivity.this, CodePickActivity.class);
-                    startActivity(intent1);
-                    break;
-                case R.id.fab2:
-                    Log.d("Raj", "Fab 2");
-                    Intent intent2 = new Intent(MainActivity.this, ClRegistActivity.class);
-                    startActivity(intent2);
-                    break;
-            }
+    //fab
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.fab:
+                animateFAB();
+                break;
+            case R.id.fab1:
+                Log.d("Raj", "Fab 1");
+                Intent intent1 = new Intent(MainActivity.this, CodePickActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.fab2:
+                Log.d("Raj", "Fab 2");
+                Intent intent2 = new Intent(MainActivity.this, ClRegistActivity.class);
+                startActivity(intent2);
+                break;
         }
+    }
 
-        public void animateFAB() {
+    public void animateFAB() {
 
-            if (isFabOpen) {
+        if (isFabOpen) {
 
-                fab.startAnimation(rotate_backward);
-                fab1.startAnimation(fab_close);
-                fab2.startAnimation(fab_close);
-                fab1.setClickable(false);
-                fab2.setClickable(false);
-                isFabOpen = false;
-                Log.d("Raj", "close");
+            fab.startAnimation(rotate_backward);
+            fab1.startAnimation(fab_close);
+            fab2.startAnimation(fab_close);
+            textView4.startAnimation(fab_close);
+            textView5.startAnimation(fab_close);
+            fab1.setClickable(false);
+            fab2.setClickable(false);
+            textView4.setClickable(false);
+            textView5.setClickable(false);
+            isFabOpen = false;
+            Log.d("Raj", "close");
 
-            } else {
+        } else {
 
-                fab.startAnimation(rotate_forward);
-                fab1.startAnimation(fab_open);
-                fab2.startAnimation(fab_open);
-                fab1.setClickable(true);
-                fab2.setClickable(true);
-                isFabOpen = true;
-                Log.d("Raj", "open");
+            fab.startAnimation(rotate_forward);
+            fab1.startAnimation(fab_open);
+            fab2.startAnimation(fab_open);
+            textView4.startAnimation(fab_open);
+            textView5.startAnimation(fab_open);
+            fab1.setClickable(true);
+            fab2.setClickable(true);
+            textView4.setClickable(true);
+            textView5.setClickable(true);
+            isFabOpen = true;
+            Log.d("Raj", "open");
 
-            }
         }
+    }
 
 
-
-
-        }
+}
 
 
 

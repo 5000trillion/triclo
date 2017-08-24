@@ -18,7 +18,7 @@ public class ClothesDb extends RealmObject {
     private int month;
     private int day;
     private String memo;
-    //private Byte[] image;
+    private byte[] image;
 
 
     @PrimaryKey
@@ -104,12 +104,12 @@ public class ClothesDb extends RealmObject {
         this.sessionId = sessionId;
     }
 
-    /*public Byte[] getImage(){
+    public byte[] getImage(){
         return image;
     }
 
-    public void setImage(){
+    public void setImage(byte[] image){
         this.image = image;
-    }*/
+    }
 
 }

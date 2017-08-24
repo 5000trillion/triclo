@@ -31,8 +31,8 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginBottom="170dp"
                     android:layout_marginRight="70dp"
-                    android:text="TextView"
-                    android:visibility="invisible"
+                    android:text="服を追加"
+
                     android:textColor="@color/colorFAB1"/>
 
                 <TextView
@@ -42,8 +42,8 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginBottom="100dp"
                     android:layout_marginRight="70dp"
-                    android:text="TextView"
-                    android:visibility="invisible"
+                    android:text="コーデを追加"
+
                     android:textColor="@color/colorFAB1"/>
 
                 <GridView
@@ -52,7 +52,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:horizontalSpacing="15dp"
-                    android:numColumns="1"
+                    android:numColumns="3"
                     android:paddingTop="100dp"
                     android:verticalSpacing="15dp"></GridView>
 

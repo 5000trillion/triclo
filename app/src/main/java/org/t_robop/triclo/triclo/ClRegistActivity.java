@@ -49,7 +49,7 @@ public class ClRegistActivity extends AppCompatActivity {
 
     TextView resultText;
 
-    String genreArray[] = {"トップス", "インナー", "シャツ", "ボトムス", "アクセ", "その他"};
+    String genreArray[] = {"トップス", "インナー", "シャツ", "ボトムス", "アクセサリー", "その他"};
     String seasonArray[] = {"春", "夏", "秋", "冬", "春秋"};
 
     int boughtYear;

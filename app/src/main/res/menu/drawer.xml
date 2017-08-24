@@ -4,6 +4,11 @@
         <item
             android:id="@+id/menu_item1"
             android:icon="@android:drawable/ic_menu_camera"
-            android:title="test"/>
+            android:title="服"/>
+
+        <item
+            android:id="@+id/menu_item2"
+            android:icon="@android:drawable/ic_menu_camera"
+            android:title="コーディネート"/>
     </group>
 </menu>

@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView textView4, textView5;
     private Animation fab_open, fab_close, rotate_forward, rotate_backward;
     private byte[] bytes;
+    private long ClId;
 
 
     @Override
@@ -101,33 +102,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-        ArrayList<Bitmap> list = new ArrayList<Bitmap>();
-        RealmQuery<ClothesDb> find = realm.where(ClothesDb.class);
-        RealmResults<ClothesDb> results = find.findAll();
-        for (int i = 0; i < results.size(); i++) {
-            bytes = results.get(i).getImage();
-            Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-            list.add(i, bmp);
-        }
-
-        BitmapAdapter adapter = new BitmapAdapter(
-                getApplicationContext(), R.layout.list_item,
-                list);
-
-        GridView gridView = (GridView) findViewById(R.id.gridView1);
-        gridView.setAdapter(adapter);
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String message = position + "が選択されました。";
-                Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
-            }
-        });
-
-        if (list.isEmpty()) {
-            String message = "コーデが登録されていません";
-            Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
-        }
-
         Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolBar);
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -148,6 +122,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textView5.startAnimation(fab_close);
 
     }
+
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        ArrayList<Bitmap> list = new ArrayList<Bitmap>();
+        RealmQuery<ClothesDb> find = realm.where(ClothesDb.class);
+        final RealmResults<ClothesDb> results = find.findAll();
+        for (int i = 0; i < results.size(); i++) {
+            bytes = results.get(i).getImage();
+            Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            list.add(i, bmp);
+        }
+
+        BitmapAdapter adapter = new BitmapAdapter(
+                getApplicationContext(), R.layout.list_item,
+                list);
+
+        GridView gridView = (GridView) findViewById(R.id.gridView1);
+        gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int id2 = (int) id;
+                ClId = results.get(id2).getId();
+                Intent intent = new Intent(MainActivity.this, ClDetailActivity.class);
+                intent.putExtra("ClId", ClId);
+                startActivity(intent);
+            }
+        });
+
+        if (list.isEmpty()) {
+            String message = "コーデが登録されていません";
+            Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
+        }
+    }
+
 
     private void permissionAcquisition() {
 

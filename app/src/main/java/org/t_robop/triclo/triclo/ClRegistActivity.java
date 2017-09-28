@@ -47,9 +47,7 @@ public class ClRegistActivity extends AppCompatActivity {
     TextView colText;
     String clColor;
 
-    TextView resultText;
-
-    String genreArray[] = {"トップス", "インナー", "シャツ", "ボトムス", "アクセ", "その他"};
+    String genreArray[] = {"トップス", "インナー", "シャツ", "ボトムス", "アクセサリー", "その他"};
     String seasonArray[] = {"春", "夏", "秋", "冬", "春秋"};
 
     int boughtYear;
@@ -109,7 +107,6 @@ public class ClRegistActivity extends AppCompatActivity {
         dateText = (TextView) findViewById(R.id.dateText);
         dateText.setText(nowYear + "/" + nowMonth + "/" + nowDay);
         colText = (TextView) findViewById(R.id.coltext);
-        resultText = (TextView) findViewById(R.id.textView7);
 
 
         //Spinner
@@ -172,6 +169,8 @@ public class ClRegistActivity extends AppCompatActivity {
     }
 
 
+    //大変だった
+    //コードコピペした
     public void showDatePickerDialog(View v) {
         DatePickerDialog datePicker = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -190,6 +189,8 @@ public class ClRegistActivity extends AppCompatActivity {
     }
 
 
+    //大変だった
+    //コピペしてもよくわかんなかった
     //色選択のダイアログフラグメント
     public static class ColorSelectDialogFragment extends DialogFragment {
         @Override
@@ -261,6 +262,9 @@ public class ClRegistActivity extends AppCompatActivity {
         seasonSpinner.setAdapter(seasonAdapter);
     }
 
+
+    //大変だった
+    //
     //登録ボタン
     public void registClData(View v) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -290,15 +294,7 @@ public class ClRegistActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ClRegistFinActivity.class);
         intent.putExtra("clId", l);
         startActivity(intent);
+        finish();
     }
 
-    public void find(View v) {
-        RealmQuery<ClothesDb> find = realm.where(ClothesDb.class);
-        RealmResults<ClothesDb> results = find.findAll();
-
-        for (ClothesDb test : results) {
-            String res = String.valueOf(test.getId());
-            resultText.setText(res);
-        }
-    }
 }

@@ -60,17 +60,20 @@ public class ClRegistFinActivity extends AppCompatActivity {
     }
 
     public void close(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, MainActivity.class);
+        //startActivity(intent);
+        finish();
     }
 
     public void nextRegist(View v) {
         Intent intent = new Intent(this, CameraActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void returnToDebug(View v) {
         Intent intent = new Intent(this, DebugActivity.class);
         startActivity(intent);
+        finish();
     }
 }

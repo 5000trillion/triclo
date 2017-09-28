@@ -36,6 +36,7 @@ public class CameraActivity extends AppCompatActivity {
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, RESULT_CAMERA);
+
     }
 
     @Override
@@ -49,6 +50,7 @@ public class CameraActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ClRegistActivity.class);
             intent.putExtra("image",bitmap);
             startActivity(intent);
+            finish();
 
         }
     }

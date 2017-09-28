@@ -51,9 +51,11 @@ public class ClDetailActivity extends AppCompatActivity {
         dayText = (TextView) findViewById(R.id.dayText);
         clImg = (ImageView) findViewById(R.id.imageView);
 
+        //IDを受け取る
         Intent intent = getIntent();
         ClId = intent.getLongExtra("ClId", ClId);
 
+        //IDから服を検索して各データをセット
         Realm.init(this);
         realm = Realm.getDefaultInstance();
         RealmQuery<ClothesDb> find = realm.where(ClothesDb.class);
